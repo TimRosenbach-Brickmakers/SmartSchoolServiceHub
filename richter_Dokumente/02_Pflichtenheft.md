@@ -36,9 +36,7 @@ Vorschlag für die Struktur (kann gelöscht werden):
 ### 2.1 Ausgangssituation
 
 Am Standort Beatusstraße der BBS Technik Koblenz werden zahlreiche technische Geräte,
-Räume und digitale Systeme täglich genutzt. Dazu gehören digitale Displays, 3D-Drucker,
-Netzwerktechnik, Raumklima-Sensoren, smarte Steckdosen und weitere technische
-Infrastruktur.
+Räume und digitale Systeme täglich genutzt. Dazu gehören digitale Displays, Lichtsensoren und Raumluftklima-Sensoren.
 
 Störungen und Wartungsbedarfe werden bisher teilweise **mündlich, per E-Mail, über ein
 Störungsbuch aus dem Jahr 1973 oder über einzelne Aufzeichnungen** gemeldet. Dadurch fehlt
