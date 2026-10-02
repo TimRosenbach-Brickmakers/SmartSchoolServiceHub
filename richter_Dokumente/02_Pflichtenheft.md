@@ -4,10 +4,9 @@
 
 **Auftraggebende Stelle:** BBS Technik Koblenz, Standort Beatusstraße
 **Projektteam:** _(siehe Kapitel 1)_
-**Klasse / Projektgruppe:** _[24a / 24b – bitte ergänzen]_
+**Klasse / Projektgruppe:** BS IT 24b
 **Dokumentstand:** Grobform, Meilenstein 1
 **Datum:** 30.09.2026
-**Version:** 0.3
 
 > **Hinweis zum Reifegrad:** Dieses Dokument ist bewusst die in Meilenstein 1 geforderte
 > **Grobform**. Es enthält die Teambeschreibung, den Projektauftrag und die vorpriorisierte
