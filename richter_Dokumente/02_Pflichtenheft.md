@@ -18,18 +18,11 @@
 
 ## 1 Teambeschreibung
 
-> _Dieses Kapitel wird vom Team selbst ausgefüllt._
+Mitwirkende Mitglieder des Projekts:
+Tim Rosenbach, Niklas Bauer, Mika Grede & Max Salaschin
 
-<!--
-Vorschlag für die Struktur (kann gelöscht werden):
-- Teamname
-- Mitglieder mit Rolle (Projektleitung, Frontend, Backend, Datenbank, Doku/QS)
-- Vorkenntnisse und Stärken je Mitglied
-- Verfügbarkeit (Verkürzende / Nicht-Verkürzende)
-- Zusammenarbeit: Kommunikationswege, Meeting-Rhythmus, Werkzeuge
--->
-
----
+Jedes Mitglied arbeitet gleich viel am Projekt mit und alle Mitglieder sind in den Bereichen Frontend,
+Backend, Datenbank sowie Projektmanagement tätig.
 
 ## 2 Projektauftrag
 
@@ -78,15 +71,6 @@ Konkrete Teilziele:
 
 **Zweite Fachrichtung im selben Projekt:** Der Service Hub wird von zwei Fachrichtungen
 gemeinsam bearbeitet.
-
-| Fachrichtung | Schwerpunkt |
-|--------------|-------------|
-| Fachinformatik **Anwendungsentwicklung** (LF 10a, 11a, 12a) — *dieses Team* | Entwicklung des Service Hub: Oberfläche, Backend, Datenbank, Schnittstellen, Datenverarbeitung |
-| Fachinformatik **Daten- und Prozessanalyse** (LF 10c, 11c, 12c) | Auswertung der entstehenden Daten: Kennzahlen, Visualisierungen, Prozessoptimierung, Machine Learning |
-
-Daraus ergibt sich eine feste Schnittstelle: Die Daten- und Prozessanalyse formuliert
-Anforderungen an benötigte Daten, dieses Team muss deren Speicherung und Bereitstellung
-über die API sicherstellen.
 
 **Benutzergruppen (geklärt mit der auftraggebenden Lehrkraft):** Die Anwendung nutzen
 ausschließlich **Lehrkräfte, Hausmeister*in, Schulleitung und Administration**.
@@ -137,12 +121,6 @@ gibt es nicht.
 
 Diese Festlegung erfüllt die in Meilenstein 1 geforderte verbindliche Zusage zur
 genutzten Plattform.
-
-> **Änderung gegenüber Version 0.1:** Ursprünglich war **Flutter** als Frontend zugesagt.
-> Das Team hat auf **Vue** gewechselt, da eine Weboberfläche für den schulischen Einsatz
-> besser passt. Backend (C#) bleibt, die Datenbank ist von „SQL allgemein" auf **MySQL**
-> konkretisiert. In Version 0.3 ist die Auslieferung als **PWA** mit Push-Benachrichtigung
-> ergänzt (Klärung mit der auftraggebenden Lehrkraft).
 
 ### 2.6 Abgrenzung (Nicht-Ziele)
 
@@ -245,27 +223,3 @@ Nicht Bestandteil dieses Projekts sind:
 | NFA-11 | Die MQTT-Themenstruktur (Topics) und die Nutzdaten sind dokumentiert. | A |
 | NFA-12 | Das Datenmodell ist dokumentiert (ER-Diagramm und Tabellenbeschreibung). | A |
 | NFA-13 | Die dargestellten Informationen sind für die jeweilige Benutzergruppe verständlich und nützlich — nicht nur optisch ansprechend. | A |
-
-### 3.3 Offene Punkte / zu klären
-
-| Nr. | Frage | zu klären mit |
-|-----|-------|---------------|
-| OP-1 | ~~Steht reale Sensorik zur Verfügung, oder werden Sensordaten simuliert?~~ **Geklärt:** Simulation ist ausdrücklich zugelassen; Dummy-Daten sind sogar gefordert (FA-27). | erledigt |
-| OP-2 | ~~Über welche Schnittstelle werden Sensordaten geliefert?~~ **Geklärt: MQTT** (FA-26). | erledigt |
-| OP-3 | ~~Welche Rollen und Rechte sind tatsächlich gewünscht?~~ **Geklärt:** Lehrkraft (nur Aufträge stellen), Hausmeister*in (lesen + schreiben), Administration (alles), Schulleitung (Rechte legt das Team fest). Keine Schüler*innen. | erledigt |
-| OP-4 | ~~Web-Anwendung oder App?~~ **Geklärt: Vue-Weboberfläche als PWA**, Benachrichtigung per Push und zusätzlich per E-Mail. | erledigt |
-| OP-5 | ~~Ausführliche Projektbeschreibung von moodle nachtragen.~~ **Erledigt**, in Version 0.2 eingearbeitet. | erledigt |
-| OP-6 | Konkrete Meilenstein-Termine. | Auftraggeber*in |
-| OP-7 | Schnittstelle, Format und Zugang der **realen** Sensordaten. | Herr Hahn |
-| OP-8 | Reale Raumdaten der Schule verwenden oder Beispielräume anlegen? | Auftraggeber*in |
-| OP-9 | ~~Anmeldung über M365 / Schulmail?~~ **Geklärt:** Anmeldung frei wählbar, einfache eigene Anmeldung. | erledigt |
-| OP-10 | ~~Was bedeutet „Daten auswerten"?~~ **Geklärt:** Statistiken (FA-13). | erledigt |
-
----
-
-## 4 Weiteres Vorgehen (Ausblick Meilenstein 1)
-
-- [ ] Teambeschreibung (Kapitel 1) ausfüllen
-- [ ] Roh-GANTT-Diagramm der Projektphasen anlegen: *Was kommt wann und wer kümmert sich?*
-- [ ] Offene Punkte aus 3.3 klären und Anforderungsliste nachschärfen
-- [ ] Pflichtenheft von Grobform in Richtung Feinform ausbauen
