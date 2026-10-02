@@ -683,7 +683,7 @@ Learning — macht die Daten- und Prozessanalyse auf Basis unserer Daten.
 | Einfaches Störmeldesystem | Kapitel 5.4, 5.5 |
 | JSON-Export | Kapitel 11.1 |
 | Dokumentation der Schnittstellen | Kapitel 9 (OpenAPI), 6.1 (MQTT) |
-| Projekt- und Meilensteinplanung | GANTT — **fehlt noch** |
+| Projekt- und Meilensteinplanung | GANTT, siehe [04_GANTT.md](04_GANTT.md) |
 
 ---
 

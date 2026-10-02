@@ -46,12 +46,13 @@ Anforderungen an benötigte Daten; wir müssen Speicherung und Bereitstellung si
 - [02_Pflichtenheft.md](02_Pflichtenheft.md) – Projektauftrag + Anforderungsliste (v0.3)
 - [03_Umsetzungskonzept.md](03_Umsetzungskonzept.md) – Architektur, Screens, Datenmodell,
   MQTT, API (v0.4)
+- [04_GANTT.md](04_GANTT.md) – Roh-GANTT der Projektphasen (v0.1)
 
 ## Offene Punkte
 
 - Klasse / Gruppenanzahl: 24a (8 Gruppen) oder 24b (6 Gruppen)?
 - Termine / Meilenstein-Deadlines noch offen
-- GANTT-Diagramm für Meilenstein 1 fehlt noch
+- Roh-GANTT angelegt ([04_GANTT.md](04_GANTT.md)); Termine nach M1 sind geschätzt, Ferien und Namen fehlen noch
 - Reale Sensordaten: Schnittstelle, Format, Zugang → **mit Herrn Hahn klären**
 - Reale Raumdaten der Schule verwenden oder Beispielräume anlegen?
 - Rechte der Schulleitung festlegen (Team-Entscheidung, Vorschlag: nur lesen)

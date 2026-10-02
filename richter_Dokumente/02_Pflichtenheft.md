@@ -142,7 +142,7 @@ Nicht Bestandteil dieses Projekts sind:
 ### 2.7 Rahmenbedingungen
 
 - Bearbeitung im Rahmen des Unterrichts, Team laut Kapitel 1
-- Termine und Meilenstein-Deadlines: _[noch einzutragen]_
+- Termine und Meilenstein-Deadlines: _[noch einzutragen]_; grobe Phasenplanung siehe [04_GANTT.md](04_GANTT.md)
 - Kein Budget für kostenpflichtige Dienste/Hardware
 - Personenbezogene Daten sind auf das Minimum zu beschränken (DSGVO)
 
