@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Neue Meldung – Smart School Service Hub</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+</head>
+<body>
+<header class="kopf">
+  <div class="marke">Smart School Service Hub <small>Beatusstraße</small></div>
+  <div class="umschalter">
+    <label><span data-de="Rolle" data-en="Role">Rolle</span>
+      <select id="rolle">
+        <option value="lehrkraft" data-de="Lehrkraft" data-en="Teacher">Lehrkraft</option>
+        <option value="hausmeister" data-de="Hausmeister" data-en="Caretaker">Hausmeister</option>
+        <option value="admin" data-de="Admin" data-en="Admin">Admin</option>
+      </select>
+    </label>
+    <label><span data-de="Wetter" data-en="Weather">Wetter</span>
+      <select id="wetter">
+        <option value="sonne" data-de="Sonne" data-en="Sunny">Sonne</option>
+        <option value="regen" data-de="Regen" data-en="Rain">Regen</option>
+        <option value="sturm" data-de="Sturm" data-en="Storm">Sturm</option>
+        <option value="schnee" data-de="Schnee" data-en="Snow">Schnee</option>
+      </select>
+    </label>
+    <label><span data-de="Alarm" data-en="Alarm">Alarm</span>
+      <select id="alarm">
+        <option value="aus" data-de="aus" data-en="off">aus</option>
+        <option value="an" data-de="an" data-en="on">an</option>
+      </select>
+    </label>
+    <label><span data-de="Sprache" data-en="Language">Sprache</span>
+      <select id="sprache">
+        <option value="de">DE</option>
+        <option value="en">EN</option>
+      </select>
+    </label>
+    <span class="wetter-chip" id="wetter-chip"></span>
+    <a class="abmelden" href="index.html" data-de="Abmelden" data-en="Sign out">Abmelden</a>
+  </div>
+</header>
+
+<!-- Alarm-Banner -->
+<div class="alarm-banner">
+  <span>✕ ALARM E.04 Serverraum: Temperatur 34,2 °C (Grenzwert 28 °C) seit 09:42</span>
+  <button class="btn klein nur-hm" type="button">Quittieren</button>
+  <a href="geschoss.html">Zum Raum</a>
+</div>
+<div class="rahmen">
+  <nav class="nav">
+    <a href="dashboard.html"><span class="ico">⌂</span><span class="lbl" data-de="Übersicht" data-en="Overview">Übersicht</span></a>
+    <a href="geschoss.html"><span class="ico">▦</span><span class="lbl" data-de="Geschosse" data-en="Floors">Geschosse</span></a>
+    <a href="meldungen.html"><span class="ico">☰</span><span class="lbl" data-de="Meldungen" data-en="Tickets">Meldungen</span></a>
+    <a href="meldung_neu.html" class="aktiv"><span class="ico">＋</span><span class="lbl" data-de="Melden" data-en="Report">Melden</span></a>
+    <a class="nur-admin" href="verwaltung.html"><span class="ico">⚙</span><span class="lbl" data-de="Verwaltung" data-en="Admin">Verwaltung</span></a>
+    <div class="nutzer"><b id="nutzer-name">K. Weber</b><span id="nutzer-rolle">Hausmeister</span></div>
+  </nav>
+  <main class="inhalt">
+    <h1>Störung melden</h1>
+
+    <section class="karte">
+      <form class="formular" action="meldung_detail.html">
+        <label>Raum
+          <select name="raum">
+            <option>E.02 Netzwerklabor</option>
+            <option selected>1.02 Informatiklabor</option>
+            <option>2.03 Klassenraum</option>
+            <option>E.05 Klassenraum</option>
+          </select>
+          <span class="hinweis">Aus der Raumansicht vorausgewählt.</span>
+        </label>
+        <label>Gerät (optional)
+          <select name="geraet">
+            <option>kein bestimmtes Gerät</option>
+            <option>Beamer 1.02</option>
+            <option>Dozenten-PC 1.02</option>
+            <option>Drucker 1.02</option>
+          </select>
+        </label>
+        <label>Titel
+          <input type="text" name="titel" value="Beamer startet nicht" maxlength="80">
+        </label>
+        <label>Beschreibung
+          <textarea name="beschreibung">Der Beamer zeigt nach dem Einschalten nur eine rote Lampe. HDMI-Kabel wurde schon getauscht.</textarea>
+        </label>
+        <label>Priorität
+          <select name="prio">
+            <option>Niedrig</option>
+            <option>Normal</option>
+            <option selected>Hoch</option>
+            <option>Dringend</option>
+          </select>
+        </label>
+        <div class="knopfzeile">
+          <button class="btn" type="submit">Meldung absenden</button>
+          <a class="btn hell" href="meldungen.html">Abbrechen</a>
+        </div>
+      </form>
+    </section>
+  </main>
+</div>
+</body>
+</html>

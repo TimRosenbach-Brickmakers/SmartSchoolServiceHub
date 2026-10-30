@@ -1,0 +1,44 @@
+{
+  "@@locale": "de",
+  "appTitleName": "Smart School Service Hub",
+  "appLanguageLabel": "Sprache",
+  "appLanguageSystem": "Systemsprache",
+  "commonActionLogout": "Abmelden",
+  "errorServerGeneric": "Es ist ein unerwarteter Fehler aufgetreten.",
+  "errorAuthUnauthorized": "Bitte melden Sie sich erneut an.",
+  "authLoginTitle": "Anmelden",
+  "authLoginUsername": "Benutzername",
+  "authLoginPassword": "Passwort",
+  "authLoginSubmit": "Anmelden",
+  "dashboardScreenTitle": "Übersicht",
+  "roomStateOk": "In Ordnung",
+  "roomStateWarning": "Warnung",
+  "roomStateAlarm": "Alarm",
+  "roomStateOutOfOrder": "Außer Betrieb",
+  "roomStateUnknown": "Unbekannt",
+  "ticketFormTitle": "Neue Störmeldung",
+  "ticketFormSubject": "Betreff",
+  "ticketFormSubmit": "Meldung absenden",
+  "ticketFormSuccess": "Die Meldung wurde erfasst.",
+  "ticketStatusNew": "Neu",
+  "ticketStatusInProgress": "In Bearbeitung",
+  "ticketStatusDone": "Erledigt",
+  "ticketStatusRejected": "Abgelehnt",
+  "roleTeacher": "Lehrkraft",
+  "roleCaretaker": "Hausmeister*in",
+  "roleIt": "IT-Verantwortliche",
+  "roleAdmin": "Administration",
+  "apiTicketNotFound": "Die Meldung wurde nicht gefunden.",
+  "apiTicketInvalidTransition": "Statuswechsel von {from} nach {to} ist nicht erlaubt.",
+  "@apiTicketInvalidTransition": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      }
+    }
+  },
+  "apiRoomNotFound": "Der Raum wurde nicht gefunden."
+}

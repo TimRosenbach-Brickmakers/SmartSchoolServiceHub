@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meldungen – Smart School Service Hub</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+</head>
+<body>
+<header class="kopf">
+  <div class="marke">Smart School Service Hub <small>Beatusstraße</small></div>
+  <div class="umschalter">
+    <label><span data-de="Rolle" data-en="Role">Rolle</span>
+      <select id="rolle">
+        <option value="lehrkraft" data-de="Lehrkraft" data-en="Teacher">Lehrkraft</option>
+        <option value="hausmeister" data-de="Hausmeister" data-en="Caretaker">Hausmeister</option>
+        <option value="admin" data-de="Admin" data-en="Admin">Admin</option>
+      </select>
+    </label>
+    <label><span data-de="Wetter" data-en="Weather">Wetter</span>
+      <select id="wetter">
+        <option value="sonne" data-de="Sonne" data-en="Sunny">Sonne</option>
+        <option value="regen" data-de="Regen" data-en="Rain">Regen</option>
+        <option value="sturm" data-de="Sturm" data-en="Storm">Sturm</option>
+        <option value="schnee" data-de="Schnee" data-en="Snow">Schnee</option>
+      </select>
+    </label>
+    <label><span data-de="Alarm" data-en="Alarm">Alarm</span>
+      <select id="alarm">
+        <option value="aus" data-de="aus" data-en="off">aus</option>
+        <option value="an" data-de="an" data-en="on">an</option>
+      </select>
+    </label>
+    <label><span data-de="Sprache" data-en="Language">Sprache</span>
+      <select id="sprache">
+        <option value="de">DE</option>
+        <option value="en">EN</option>
+      </select>
+    </label>
+    <span class="wetter-chip" id="wetter-chip"></span>
+    <a class="abmelden" href="index.html" data-de="Abmelden" data-en="Sign out">Abmelden</a>
+  </div>
+</header>
+
+<!-- Alarm-Banner -->
+<div class="alarm-banner">
+  <span>✕ ALARM E.04 Serverraum: Temperatur 34,2 °C (Grenzwert 28 °C) seit 09:42</span>
+  <button class="btn klein nur-hm" type="button">Quittieren</button>
+  <a href="geschoss.html">Zum Raum</a>
+</div>
+<div class="rahmen">
+  <nav class="nav">
+    <a href="dashboard.html"><span class="ico">⌂</span><span class="lbl" data-de="Übersicht" data-en="Overview">Übersicht</span></a>
+    <a href="geschoss.html"><span class="ico">▦</span><span class="lbl" data-de="Geschosse" data-en="Floors">Geschosse</span></a>
+    <a href="meldungen.html" class="aktiv"><span class="ico">☰</span><span class="lbl" data-de="Meldungen" data-en="Tickets">Meldungen</span></a>
+    <a href="meldung_neu.html"><span class="ico">＋</span><span class="lbl" data-de="Melden" data-en="Report">Melden</span></a>
+    <a class="nur-admin" href="verwaltung.html"><span class="ico">⚙</span><span class="lbl" data-de="Verwaltung" data-en="Admin">Verwaltung</span></a>
+    <div class="nutzer"><b id="nutzer-name">K. Weber</b><span id="nutzer-rolle">Hausmeister</span></div>
+  </nav>
+  <main class="inhalt">
+    <div class="detail-kopf">
+      <h1>Meldungen</h1>
+      <a class="btn" href="meldung_neu.html">Neue Meldung</a>
+    </div>
+
+    <!-- Filter -->
+    <form class="filter">
+      <input type="search" placeholder="Suche in Titel und Beschreibung">
+      <select>
+        <option>Alle Status</option>
+        <option>Neu</option>
+        <option>In Bearbeitung</option>
+        <option>Erledigt</option>
+        <option>Abgelehnt</option>
+      </select>
+      <select>
+        <option>Alle Prioritäten</option>
+        <option>Niedrig</option>
+        <option>Normal</option>
+        <option>Hoch</option>
+        <option>Dringend</option>
+      </select>
+      <select>
+        <option>Alle Räume</option>
+        <option>E.02 Netzwerklabor</option>
+        <option>1.02 Informatiklabor</option>
+        <option>2.03 Klassenraum</option>
+      </select>
+    </form>
+
+
+    <section class="karte tabellen-rahmen">
+      <table>
+        <thead>
+          <tr><th>Nr.</th><th>Titel</th><th>Raum</th><th>Priorität</th><th>Status</th><th class="sp2">Gemeldet von</th><th class="sp2">Datum</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1042</td><td><a href="meldung_detail.html">Beamer startet nicht</a></td><td>1.02</td><td class="prio-hoch">Hoch</td><td><span class="badge m-bearb">In Bearbeitung</span></td><td class="sp2">M. Schneider</td><td class="sp2">30.10.2026</td></tr>
+          <tr><td>1041</td><td><a href="meldung_detail.html">Fenster klemmt</a></td><td>2.03</td><td>Normal</td><td><span class="badge m-neu">Neu</span></td><td class="sp2">M. Schneider</td><td class="sp2">29.10.2026</td></tr>
+          <tr class="nur-hm"><td>1040</td><td><a href="meldung_detail.html">Heizung rauscht laut</a></td><td>1.05</td><td>Niedrig</td><td><span class="badge m-neu">Neu</span></td><td class="sp2">L. Becker</td><td class="sp2">29.10.2026</td></tr>
+          <tr class="nur-hm"><td>1039</td><td><a href="meldung_detail.html">WLAN fällt aus</a></td><td>E.02</td><td class="prio-dringend">Dringend</td><td><span class="badge m-erledigt">Erledigt</span></td><td class="sp2">J. Krämer</td><td class="sp2">28.10.2026</td></tr>
+          <tr><td>1036</td><td><a href="meldung_detail.html">Steckdose defekt</a></td><td>E.05</td><td>Normal</td><td><span class="badge m-erledigt">Erledigt</span></td><td class="sp2">M. Schneider</td><td class="sp2">22.10.2026</td></tr>
+          <tr class="nur-hm"><td>1033</td><td><a href="meldung_detail.html">Wasserschaden Decke</a></td><td>E.08</td><td class="prio-dringend">Dringend</td><td><span class="badge m-bearb">In Bearbeitung</span></td><td class="sp2">K. Weber</td><td class="sp2">20.10.2026</td></tr>
+          <tr><td>1030</td><td><a href="meldung_detail.html">Drucker druckt schief</a></td><td>1.02</td><td>Niedrig</td><td><span class="badge m-abgelehnt">Abgelehnt</span></td><td class="sp2">M. Schneider</td><td class="sp2">15.10.2026</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+{
+  "@@locale": "en",
+  "appTitleName": "Smart School Service Hub",
+  "appLanguageLabel": "Language",
+  "appLanguageSystem": "System language",
+  "commonActionLogout": "Sign out",
+  "errorServerGeneric": "An unexpected error occurred.",
+  "errorAuthUnauthorized": "Please sign in again.",
+  "authLoginTitle": "Sign in",
+  "authLoginUsername": "Username",
+  "authLoginPassword": "Password",
+  "authLoginSubmit": "Sign in",
+  "dashboardScreenTitle": "Dashboard",
+  "roomStateOk": "OK",
+  "roomStateWarning": "Warning",
+  "roomStateAlarm": "Alarm",
+  "roomStateOutOfOrder": "Out of order",
+  "roomStateUnknown": "Unknown",
+  "ticketFormTitle": "New issue ticket",
+  "ticketFormSubject": "Subject",
+  "ticketFormSubmit": "Submit ticket",
+  "ticketFormSuccess": "The ticket has been created.",
+  "ticketStatusNew": "New",
+  "ticketStatusInProgress": "In progress",
+  "ticketStatusDone": "Done",
+  "ticketStatusRejected": "Rejected",
+  "roleTeacher": "Teacher",
+  "roleCaretaker": "Caretaker",
+  "roleIt": "IT staff",
+  "roleAdmin": "Administrator",
+  "apiTicketNotFound": "The ticket was not found.",
+  "apiTicketInvalidTransition": "Status change from {from} to {to} is not allowed.",
+  "@apiTicketInvalidTransition": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      }
+    }
+  },
+  "apiRoomNotFound": "The room was not found."
+}

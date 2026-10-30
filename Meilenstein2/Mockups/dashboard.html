@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard – Smart School Service Hub</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+</head>
+<body>
+<header class="kopf">
+  <div class="marke">Smart School Service Hub <small>Beatusstraße</small></div>
+  <div class="umschalter">
+    <label><span data-de="Rolle" data-en="Role">Rolle</span>
+      <select id="rolle">
+        <option value="lehrkraft" data-de="Lehrkraft" data-en="Teacher">Lehrkraft</option>
+        <option value="hausmeister" data-de="Hausmeister" data-en="Caretaker">Hausmeister</option>
+        <option value="admin" data-de="Admin" data-en="Admin">Admin</option>
+      </select>
+    </label>
+    <label><span data-de="Wetter" data-en="Weather">Wetter</span>
+      <select id="wetter">
+        <option value="sonne" data-de="Sonne" data-en="Sunny">Sonne</option>
+        <option value="regen" data-de="Regen" data-en="Rain">Regen</option>
+        <option value="sturm" data-de="Sturm" data-en="Storm">Sturm</option>
+        <option value="schnee" data-de="Schnee" data-en="Snow">Schnee</option>
+      </select>
+    </label>
+    <label><span data-de="Alarm" data-en="Alarm">Alarm</span>
+      <select id="alarm">
+        <option value="aus" data-de="aus" data-en="off">aus</option>
+        <option value="an" data-de="an" data-en="on">an</option>
+      </select>
+    </label>
+    <label><span data-de="Sprache" data-en="Language">Sprache</span>
+      <select id="sprache">
+        <option value="de">DE</option>
+        <option value="en">EN</option>
+      </select>
+    </label>
+    <span class="wetter-chip" id="wetter-chip"></span>
+    <a class="abmelden" href="index.html" data-de="Abmelden" data-en="Sign out">Abmelden</a>
+  </div>
+</header>
+
+<!-- Alarm-Banner -->
+<div class="alarm-banner">
+  <span>✕ ALARM E.04 Serverraum: Temperatur 34,2 °C (Grenzwert 28 °C) seit 09:42</span>
+  <button class="btn klein nur-hm" type="button">Quittieren</button>
+  <a href="geschoss.html">Zum Raum</a>
+</div>
+<div class="rahmen">
+  <nav class="nav">
+    <a href="dashboard.html" class="aktiv"><span class="ico">⌂</span><span class="lbl" data-de="Übersicht" data-en="Overview">Übersicht</span></a>
+    <a href="geschoss.html"><span class="ico">▦</span><span class="lbl" data-de="Geschosse" data-en="Floors">Geschosse</span></a>
+    <a href="meldungen.html"><span class="ico">☰</span><span class="lbl" data-de="Meldungen" data-en="Tickets">Meldungen</span></a>
+    <a href="meldung_neu.html"><span class="ico">＋</span><span class="lbl" data-de="Melden" data-en="Report">Melden</span></a>
+    <a class="nur-admin" href="verwaltung.html"><span class="ico">⚙</span><span class="lbl" data-de="Verwaltung" data-en="Admin">Verwaltung</span></a>
+    <div class="nutzer"><b id="nutzer-name">K. Weber</b><span id="nutzer-rolle">Hausmeister</span></div>
+  </nav>
+  <main class="inhalt">
+    <h1>Übersicht</h1>
+
+    <!-- Kennzahlen -->
+    <section class="kennzahlen">
+      <div class="karte kpi"><div class="zahl">7</div><div class="titel">Offene Meldungen</div></div>
+      <div class="karte kpi rot"><div class="zahl"><span class="ohne-alarm">2</span><span class="mit-alarm">3</span></div><div class="titel">Aktive Alarme</div></div>
+      <div class="karte kpi"><div class="zahl"><span class="ohne-alarm">18</span><span class="mit-alarm">17</span> / 24</div><div class="titel">Räume in Ordnung</div></div>
+      <div class="karte kpi"><div class="zahl">1</div><div class="titel">Räume außer Betrieb</div></div>
+    </section>
+
+    <div class="dash">
+      <!-- Alarmliste -->
+      <section class="karte">
+        <h2>Alarmliste</h2>
+        <ul class="liste">
+          <li class="nur-alarm">
+            <span class="badge st-alarm"><span>✕</span> Alarm</span>
+            <span class="rest"><b>E.04 Serverraum</b><br>Temperatur 34,2 °C (Grenzwert 28 °C) · seit 09:42</span>
+            <button class="btn klein nur-hm" type="button">Quittieren</button>
+          </li>
+          <li>
+            <span class="badge st-warnung"><span>▲</span> Warnung</span>
+            <span class="rest"><b>E.02 Netzwerklabor</b><br>CO₂ 1.350 ppm (Grenzwert 1.200 ppm) · seit 08:15</span>
+            <button class="btn klein nur-hm" type="button">Quittieren</button>
+          </li>
+          <li>
+            <span class="badge st-warnung"><span>▲</span> Warnung</span>
+            <span class="rest"><b>2.03 Klassenraum</b><br>Temperatur 27,8 °C (Grenzwert 26 °C) · seit 10:05 · quittiert</span>
+            <a class="btn klein hell" href="geschoss.html">Raum</a>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Wetter-Kachel -->
+      <section class="karte wetter">
+        <h2>Wetter Koblenz</h2>
+        <div class="wetter-icon" id="wetter-icon">☀</div>
+        <div class="wetter-temp" id="wetter-temp">21 °C</div>
+        <div id="wetter-text">Sonnig</div>
+        <div class="hinweis" id="wetter-wind">Wind 9 km/h</div>
+        <p class="wetter-hinweis" id="wetter-hinweis">Keine Hinweise</p>
+      </section>
+
+      <!-- Messwert-Anzeige -->
+      <section class="karte">
+        <h2>Temperatur Serverraum E.04</h2>
+        <div class="wert-gross"><span class="ohne-alarm">23,1 °C</span><span class="mit-alarm">34,2 °C</span> <span class="hinweis">aktuell · Grenzwert 28 °C</span></div>
+        <div class="balken">
+          <span class="grenze"></span>
+          <span class="b" style="--h:55%"></span>
+          <span class="b" style="--h:56%"></span>
+          <span class="b" style="--h:54%"></span>
+          <span class="b" style="--h:58%"></span>
+          <span class="b" style="--h:57%"></span>
+          <span class="b" style="--h:60%"></span>
+          <span class="b" style="--h:59%"></span>
+          <span class="b" style="--h:61%"></span>
+          <span class="b" style="--h:60%"></span>
+          <span class="b" style="--h:62%"></span>
+          <span class="b spitze" style="--h:63%; --h2:86%"></span>
+          <span class="b spitze" style="--h:62%; --h2:95%"></span>
+        </div>
+        <div class="achse"><span>vor 12 Std.</span><span>jetzt</span></div>
+      </section>
+
+      <!-- letzte Meldungen -->
+      <section class="karte">
+        <h2>Letzte Meldungen</h2>
+        <ul class="liste">
+          <li><span class="rest"><a href="meldung_detail.html">#1042 Beamer startet nicht</a><br><span class="hinweis">1.02 · heute 07:50</span></span><span class="badge m-bearb">In Bearbeitung</span></li>
+          <li><span class="rest"><a href="meldung_detail.html">#1041 Fenster klemmt</a><br><span class="hinweis">2.03 · gestern</span></span><span class="badge m-neu">Neu</span></li>
+          <li><span class="rest"><a href="meldung_detail.html">#1039 WLAN fällt aus</a><br><span class="hinweis">E.02 · 28.10.</span></span><span class="badge m-erledigt">Erledigt</span></li>
+        </ul>
+        <a class="btn hell klein" href="meldungen.html">Alle Meldungen</a>
+      </section>
+    </div>
+  </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Geschosse – Smart School Service Hub</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+</head>
+<body>
+<header class="kopf">
+  <div class="marke">Smart School Service Hub <small>Beatusstraße</small></div>
+  <div class="umschalter">
+    <label><span data-de="Rolle" data-en="Role">Rolle</span>
+      <select id="rolle">
+        <option value="lehrkraft" data-de="Lehrkraft" data-en="Teacher">Lehrkraft</option>
+        <option value="hausmeister" data-de="Hausmeister" data-en="Caretaker">Hausmeister</option>
+        <option value="admin" data-de="Admin" data-en="Admin">Admin</option>
+      </select>
+    </label>
+    <label><span data-de="Wetter" data-en="Weather">Wetter</span>
+      <select id="wetter">
+        <option value="sonne" data-de="Sonne" data-en="Sunny">Sonne</option>
+        <option value="regen" data-de="Regen" data-en="Rain">Regen</option>
+        <option value="sturm" data-de="Sturm" data-en="Storm">Sturm</option>
+        <option value="schnee" data-de="Schnee" data-en="Snow">Schnee</option>
+      </select>
+    </label>
+    <label><span data-de="Alarm" data-en="Alarm">Alarm</span>
+      <select id="alarm">
+        <option value="aus" data-de="aus" data-en="off">aus</option>
+        <option value="an" data-de="an" data-en="on">an</option>
+      </select>
+    </label>
+    <label><span data-de="Sprache" data-en="Language">Sprache</span>
+      <select id="sprache">
+        <option value="de">DE</option>
+        <option value="en">EN</option>
+      </select>
+    </label>
+    <span class="wetter-chip" id="wetter-chip"></span>
+    <a class="abmelden" href="index.html" data-de="Abmelden" data-en="Sign out">Abmelden</a>
+  </div>
+</header>
+
+<!-- Alarm-Banner -->
+<div class="alarm-banner">
+  <span>✕ ALARM E.04 Serverraum: Temperatur 34,2 °C (Grenzwert 28 °C) seit 09:42</span>
+  <button class="btn klein nur-hm" type="button">Quittieren</button>
+  <a href="geschoss.html">Zum Raum</a>
+</div>
+<div class="rahmen">
+  <nav class="nav">
+    <a href="dashboard.html"><span class="ico">⌂</span><span class="lbl" data-de="Übersicht" data-en="Overview">Übersicht</span></a>
+    <a href="geschoss.html" class="aktiv"><span class="ico">▦</span><span class="lbl" data-de="Geschosse" data-en="Floors">Geschosse</span></a>
+    <a href="meldungen.html"><span class="ico">☰</span><span class="lbl" data-de="Meldungen" data-en="Tickets">Meldungen</span></a>
+    <a href="meldung_neu.html"><span class="ico">＋</span><span class="lbl" data-de="Melden" data-en="Report">Melden</span></a>
+    <a class="nur-admin" href="verwaltung.html"><span class="ico">⚙</span><span class="lbl" data-de="Verwaltung" data-en="Admin">Verwaltung</span></a>
+    <div class="nutzer"><b id="nutzer-name">K. Weber</b><span id="nutzer-rolle">Hausmeister</span></div>
+  </nav>
+  <main class="inhalt">
+    <h1>Geschosse und Räume</h1>
+
+    <div class="geschoss-zeile">
+      <div class="tabs">
+        <button class="tab aktiv" type="button" data-ziel="eg">EG</button>
+        <button class="tab" type="button" data-ziel="og1">1. OG</button>
+        <button class="tab" type="button" data-ziel="og2">2. OG</button>
+      </div>
+      <label>Zustand des gewählten Raums (Demo)
+        <select id="raumzustand">
+          <option value="ok">OK</option>
+          <option value="warnung">Warnung</option>
+          <option value="alarm">Alarm</option>
+          <option value="aus">Außer Betrieb</option>
+          <option value="unbekannt">Unbekannt</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="geschoss-layout">
+      <section class="karte">
+        <!-- Erdgeschoss -->
+        <div class="etage aktiv" id="eg">
+          <button class="raum st-ok" type="button" data-status="ok" data-werte="21,8 °C · 640 ppm · 45 %" data-meld="0"><span class="nr">E.01</span><span class="name">Lehrerzimmer</span><span class="status"><span class="sym">✓</span><span class="txt">OK</span></span></button>
+          <button class="raum st-warnung gewaehlt" type="button" data-status="warnung" data-werte="24,1 °C · 1.350 ppm · 52 %" data-meld="1"><span class="nr">E.02</span><span class="name">Netzwerklabor</span><span class="status"><span class="sym">▲</span><span class="txt">Warnung</span></span></button>
+          <button class="raum st-ok" type="button" data-status="ok" data-werte="22,3 °C · 710 ppm · 41 %" data-meld="0"><span class="nr">E.03</span><span class="name">3D-Druck-Werkstatt</span><span class="status"><span class="sym">✓</span><span class="txt">OK</span></span></button>
+          <button class="raum st-ok" id="raum-E04" type="button" data-status="ok" data-werte="23,1 °C · 480 ppm · 38 %" data-meld="0"><span class="nr">E.04</span><span class="name">Serverraum</span><span class="status"><span class="sym">✓</span><span class="txt">OK</span></span></button>
+          <div class="flur">Flur / Treppenhaus</div>
+          <button class="raum st-ok" type="button" data-status="ok" data-werte="21,5 °C · 590 ppm · 44 %" data-meld="0"><span class="nr">E.05</span><span class="name">Klassenraum</span><span class="status"><span class="sym">✓</span><span class="txt">OK</span></span></button>
+          <button class="raum st-ok" type="button" data-status="ok" data-werte="20,9 °C · 520 ppm · 47 %" data-meld="0"><span class="nr">E.06</span><span class="name">Hausmeister</span><span class="status"><span class="sym">✓</span><span class="txt">OK</span></span></button>
+          <button class="raum st-unbekannt" type="button" data-status="unbekannt" data-werte="keine Messwerte" data-meld="0"><span class="nr">E.07</span><span class="name">Lager</span><span class="status"><span class="sym">?</span><span class="txt">Unbekannt</span></span></button>
+          <button class="raum st-aus" type="button" data-status="aus" data-werte="19,0 °C · 450 ppm · 50 %" data-meld="1"><span class="nr">E.08</span><span class="name">Aula</span><span class="status"><span class="sym">⊘</span><span class="txt">Außer Betrieb</span></span></button>
+        </div>
+
+        <!-- 1. Obergeschoss -->
+        <div class="etage" id="og1">
+          <button class="raum st-ok" type="button" data-status="ok" data-werte="21,2 °C · 620 ppm · 43 %" data-meld="0"><span class="nr">1.01</span><span class="name">Klassenraum</span><span class="status"><span class="sym">✓</span><span class="txt">OK</span></span></button>
+          <button class="raum st-warnung" type="button" data-status="warnung" data-werte="22,6 °C · 880 ppm · 46 %" data-meld="1"><span class="nr">1.02</span><span class="name">Informatiklabor</span><span class="status"><span class="sym">▲</span><span class="txt">Warnung</span></span></button>
+          <button class="raum st-ok" type="button" data-status="ok" data-werte="21,9 °C · 700 ppm · 42 %" data-meld="0"><span class="nr">1.03</span><span class="name">Klassenraum</span><span class="status"><span class="sym">✓</span><span class="txt">OK</span></span></button>
+          <button class="raum st-ok" type="button" data-status="ok" data-werte="22,0 °C · 650 ppm · 44 %" data-meld="0"><span class="nr">1.04</span><span class="name">Elektrotechnik-Labor</span><span class="status"><span class="sym">✓</span><span class="txt">OK</span></span></button>
+          <div class="flur">Flur / Treppenhaus</div>
+          <button class="raum st-ok" type="button" data-status="ok" data-werte="21,4 °C · 580 ppm · 45 %" data-meld="0"><span class="nr">1.05</span><span class="name">Klassenraum</span><span class="status"><span class="sym">✓</span><span class="txt">OK</span></span></button>
+          <button class="raum st-ok" type="button" data-status="ok" data-werte="22,2 °C · 690 ppm · 40 %" data-meld="0"><span class="nr">1.06</span><span class="name">Besprechungsraum</span><span class="status"><span class="sym">✓</span><span class="txt">OK</span></span></button>
+          <button class="raum st-ok" type="button" data-status="ok" data-werte="21,0 °C · 610 ppm · 46 %" data-meld="0"><span class="nr">1.07</span><span class="name">Klassenraum</span><span class="status"><span class="sym">✓</span><span class="txt">OK</span></span></button>
+          <button class="raum st-ok" type="button" data-status="ok" data-werte="21,7 °C · 560 ppm · 43 %" data-meld="0"><span class="nr">1.08</span><span class="name">Bibliothek</span><span class="status"><span class="sym">✓</span><span class="txt">OK</span></span></button>
+        </div>
+
+        <!-- 2. Obergeschoss -->
+        <div class="etage" id="og2">
+          <button class="raum st-ok" type="button" data-status="ok" data-werte="21,6 °C · 600 ppm · 44 %" data-meld="0"><span class="nr">2.01</span><span class="name">Klassenraum</span><span class="status"><span class="sym">✓</span><span class="txt">OK</span></span></button>
+          <button class="raum st-ok" type="button" data-status="ok" data-werte="22,1 °C · 670 ppm · 41 %" data-meld="0"><span class="nr">2.02</span><span class="name">Klassenraum</span><span class="status"><span class="sym">✓</span><span class="txt">OK</span></span></button>
+          <button class="raum st-warnung" type="button" data-status="warnung" data-werte="27,8 °C · 760 ppm · 39 %" data-meld="1"><span class="nr">2.03</span><span class="name">Klassenraum</span><span class="status"><span class="sym">▲</span><span class="txt">Warnung</span></span></button>
+          <button class="raum st-ok" type="button" data-status="ok" data-werte="22,4 °C · 640 ppm · 42 %" data-meld="0"><span class="nr">2.04</span><span class="name">Mechatronik-Labor</span><span class="status"><span class="sym">✓</span><span class="txt">OK</span></span></button>
+          <div class="flur">Flur / Treppenhaus</div>
+          <button class="raum st-ok" type="button" data-status="ok" data-werte="21,3 °C · 590 ppm · 45 %" data-meld="0"><span class="nr">2.05</span><span class="name">Klassenraum</span><span class="status"><span class="sym">✓</span><span class="txt">OK</span></span></button>
+          <button class="raum st-unbekannt" type="button" data-status="unbekannt" data-werte="keine Messwerte" data-meld="0"><span class="nr">2.06</span><span class="name">Archiv</span><span class="status"><span class="sym">?</span><span class="txt">Unbekannt</span></span></button>
+          <button class="raum st-ok" type="button" data-status="ok" data-werte="21,8 °C · 630 ppm · 43 %" data-meld="0"><span class="nr">2.07</span><span class="name">Klassenraum</span><span class="status"><span class="sym">✓</span><span class="txt">OK</span></span></button>
+          <button class="raum st-ok" type="button" data-status="ok" data-werte="22,0 °C · 610 ppm · 44 %" data-meld="0"><span class="nr">2.08</span><span class="name">Konferenzraum</span><span class="status"><span class="sym">✓</span><span class="txt">OK</span></span></button>
+        </div>
+
+        <div class="legende">
+          <span class="badge st-ok">✓ OK</span>
+          <span class="badge st-warnung">▲ Warnung</span>
+          <span class="badge st-alarm">✕ Alarm</span>
+          <span class="badge st-aus">⊘ Außer Betrieb</span>
+          <span class="badge st-unbekannt">? Unbekannt</span>
+        </div>
+      </section>
+
+      <!-- Raumdetail-Panel -->
+      <aside class="karte">
+        <h2 id="p-titel">E.02 Netzwerklabor</h2>
+        <span class="badge st-warnung" id="p-badge"><span class="sym">▲</span><span class="txt">Warnung</span></span>
+        <ul class="werte">
+          <li><span>Messwerte</span><span id="p-werte">24,1 °C · 1.350 ppm · 52 %</span></li>
+          <li><span>Geräte</span><span>6 (5 online)</span></li>
+          <li><span>Offene Meldungen</span><span id="p-meld">1</span></li>
+        </ul>
+        <div class="knopfzeile">
+          <a class="btn" href="meldung_neu.html">Störung melden</a>
+          <button class="btn hell nur-hm" type="button">Alarm quittieren</button>
+          <button class="btn hell nur-hm" type="button" id="p-sperre">Sperre setzen</button>
+        </div>
+      </aside>
+    </div>
+  </main>
+</div>
+</body>
+</html>

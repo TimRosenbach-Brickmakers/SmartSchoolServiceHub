@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Anmeldung – Smart School Service Hub</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+</head>
+<body class="login-seite">
+  <div class="login">
+    <div class="umschalter">
+      <label><span data-de="Sprache" data-en="Language">Sprache</span>
+        <select id="sprache">
+          <option value="de">DE</option>
+          <option value="en">EN</option>
+        </select>
+      </label>
+    </div>
+    <div class="karte">
+      <h1>Smart School Service Hub</h1>
+      <p class="hinweis">BBS Technik Koblenz · Gebäude Beatusstraße</p>
+      <form class="formular" action="dashboard.html">
+        <label><span data-de="Benutzername" data-en="Username">Benutzername</span>
+          <input type="text" name="benutzer" value="k.weber">
+        </label>
+        <label><span data-de="Passwort" data-en="Password">Passwort</span>
+          <input type="password" name="passwort" value="geheim123">
+        </label>
+        <p class="fehler">Benutzername oder Passwort falsch.</p>
+        <button class="btn" type="submit" data-de="Anmelden" data-en="Sign in">Anmelden</button>
+      </form>
+      <p class="hinweis">Die Rolle (Lehrkraft, Hausmeister, Administrator) kommt nach der Anmeldung aus dem Token.</p>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,357 @@
+:root {
+  --bg: #f2f4f7;
+  --karte: #ffffff;
+  --text: #1c2630;
+  --grau: #5a6775;
+  --linie: #d8dee5;
+  --prim: #1d5fa6;
+  --prim-hell: #e3eefa;
+  --kopf: #17324f;
+
+  --ok-f: #1b6e33;   --ok-bg: #e2f3e6;
+  --warn-f: #7a4d00; --warn-bg: #ffefc2;
+  --alarm-f: #a8231b; --alarm-bg: #fde3e0;
+  --aus-f: #4a4a4a;  --aus-bg: #e4e4e4;
+  --unb-f: #3a4a82;  --unb-bg: #e8ebf5;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #11161c;
+    --karte: #1b232c;
+    --text: #e6ebf0;
+    --grau: #9aa7b4;
+    --linie: #33404d;
+    --prim: #7db4f0;
+    --prim-hell: #223a54;
+    --kopf: #0c2036;
+
+    --ok-f: #8fdaa2;   --ok-bg: #1d3a27;
+    --warn-f: #ffd772; --warn-bg: #43350f;
+    --alarm-f: #ffa59d; --alarm-bg: #4a1f1c;
+    --aus-f: #c4c4c4;  --aus-bg: #333333;
+    --unb-f: #aab8f0;  --unb-bg: #283050;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font: 15px/1.45 system-ui, "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+h1 { font-size: 1.5rem; margin: 0 0 16px; }
+h2 { font-size: 1.05rem; margin: 0 0 10px; }
+a { color: var(--prim); }
+
+/* Kopfzeile */
+.kopf {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 20px;
+  padding: 10px 16px;
+  background: var(--kopf);
+  color: #fff;
+}
+.marke { font-weight: 700; font-size: 1.05rem; }
+.marke small { font-weight: 400; opacity: .8; margin-left: 6px; }
+.umschalter { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-left: auto; align-items: center; }
+.umschalter label { font-size: .8rem; display: flex; align-items: center; gap: 5px; }
+.umschalter select { font: inherit; font-size: .85rem; padding: 3px 4px; border-radius: 5px; }
+.wetter-chip { font-size: .9rem; background: rgba(255,255,255,.15); padding: 3px 10px; border-radius: 12px; }
+.kopf .abmelden { color: #fff; font-size: .85rem; }
+
+/* Alarm-Banner */
+.alarm-banner {
+  display: none;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  padding: 10px 16px;
+  background: var(--alarm-f);
+  color: #fff;
+  font-weight: 600;
+}
+.alarm-banner a { color: #fff; font-weight: 400; }
+body.alarm-an .alarm-banner { display: flex; }
+.alarm-banner .btn { background: #fff; color: var(--alarm-f); border-color: #fff; }
+
+/* Rahmen und Navigation */
+.rahmen { display: grid; grid-template-columns: 220px 1fr; min-height: calc(100vh - 54px); }
+.nav {
+  background: var(--karte);
+  border-right: 1px solid var(--linie);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.nav a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: var(--text);
+  text-decoration: none;
+}
+.nav a.aktiv { background: var(--prim-hell); color: var(--prim); font-weight: 600; }
+.nav .ico { width: 1.4em; text-align: center; font-size: 1.1rem; }
+.nutzer { margin-top: auto; padding: 10px 12px; border-top: 1px solid var(--linie); font-size: .85rem; color: var(--grau); }
+.nutzer b { display: block; color: var(--text); }
+
+.inhalt { padding: 20px; max-width: 1180px; width: 100%; }
+
+/* Karten und Raster */
+.karte {
+  background: var(--karte);
+  border: 1px solid var(--linie);
+  border-radius: 10px;
+  padding: 16px;
+}
+.kennzahlen { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 14px; }
+.kpi .zahl { font-size: 2rem; font-weight: 700; line-height: 1.1; }
+.kpi .titel { color: var(--grau); font-size: .85rem; }
+.kpi.rot .zahl { color: var(--alarm-f); }
+.dash { display: grid; grid-template-columns: 2fr 1fr; gap: 14px; }
+.hinweis { color: var(--grau); font-size: .85rem; }
+
+/* Buttons und Formulare */
+.btn {
+  display: inline-block;
+  font: inherit;
+  font-size: .9rem;
+  padding: 7px 14px;
+  border-radius: 7px;
+  border: 1px solid var(--prim);
+  background: var(--prim);
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn.hell { background: transparent; color: var(--prim); }
+.btn.klein { padding: 3px 10px; font-size: .8rem; }
+.btn.rot { background: var(--alarm-f); border-color: var(--alarm-f); color: #fff; }
+
+.formular { display: grid; gap: 14px; max-width: 640px; }
+.formular label { display: grid; gap: 4px; font-weight: 600; font-size: .9rem; }
+.formular input, .formular select, .formular textarea,
+.filter input, .filter select, .kommentar textarea, .zuweisung select {
+  font: inherit;
+  padding: 8px;
+  border: 1px solid var(--linie);
+  border-radius: 7px;
+  background: var(--karte);
+  color: var(--text);
+  font-weight: 400;
+}
+.formular textarea { min-height: 110px; resize: vertical; }
+.knopfzeile { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* Badges und Raumzustände */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 9px;
+  border-radius: 12px;
+  font-size: .8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.st-ok { background: var(--ok-bg); color: var(--ok-f); }
+.st-warnung { background: var(--warn-bg); color: var(--warn-f); }
+.st-alarm { background: var(--alarm-bg); color: var(--alarm-f); }
+.st-aus { background: var(--aus-bg); color: var(--aus-f); }
+.st-unbekannt { background: var(--unb-bg); color: var(--unb-f); }
+
+.m-neu { background: var(--prim-hell); color: var(--prim); }
+.m-bearb { background: var(--warn-bg); color: var(--warn-f); }
+.m-erledigt { background: var(--ok-bg); color: var(--ok-f); }
+.m-abgelehnt { background: var(--aus-bg); color: var(--aus-f); }
+.prio-hoch, .prio-dringend { font-weight: 700; color: var(--alarm-f); }
+
+/* Listen und Tabellen */
+.liste { list-style: none; margin: 0; padding: 0; }
+.liste li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--linie);
+}
+.liste li:last-child { border-bottom: 0; }
+.liste .rest { flex: 1; min-width: 150px; }
+.liste li.nur-alarm { display: none; }
+body.alarm-an .liste li.nur-alarm { display: flex; }
+
+.tabellen-rahmen { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--linie); font-size: .9rem; }
+th { color: var(--grau); font-weight: 600; font-size: .8rem; }
+.filter { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; align-items: center; }
+
+/* Wetter */
+.wetter { text-align: center; background: #dcebfa; color: #14304d; }
+.wetter .wetter-icon { font-size: 3rem; line-height: 1.2; }
+.wetter .wetter-temp { font-size: 2rem; font-weight: 700; }
+.wetter .hinweis { color: inherit; }
+body.wetter-regen .wetter { background: #cfd8e3; }
+body.wetter-sturm .wetter { background: #b8c0cc; }
+body.wetter-schnee .wetter { background: #eef3f8; }
+body.wetter-sturm .wetter .wetter-hinweis { color: var(--alarm-f); font-weight: 700; }
+@media (prefers-color-scheme: dark) {
+  .wetter, body.wetter-regen .wetter, body.wetter-sturm .wetter, body.wetter-schnee .wetter { background: #24384d; color: #e6ebf0; }
+  body.wetter-sturm .wetter .wetter-hinweis { color: #ffa59d; }
+}
+
+/* Messwert-Anzeige */
+.balken {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 130px;
+  padding: 0 4px;
+  border-bottom: 1px solid var(--linie);
+}
+.balken .b { flex: 1; height: var(--h); background: var(--prim); border-radius: 3px 3px 0 0; }
+body.alarm-an .balken .b.spitze { height: var(--h2); background: var(--alarm-f); }
+.balken .grenze { position: absolute; left: 0; right: 0; bottom: 70%; border-top: 2px dashed var(--alarm-f); }
+.achse { display: flex; justify-content: space-between; font-size: .75rem; color: var(--grau); margin-top: 3px; }
+.wert-gross { font-size: 1.4rem; font-weight: 700; }
+
+/* Geschoss */
+.geschoss-zeile { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; margin-bottom: 14px; }
+.tabs { display: flex; gap: 6px; }
+.tab {
+  font: inherit;
+  padding: 7px 18px;
+  border: 1px solid var(--linie);
+  border-radius: 7px;
+  background: var(--karte);
+  color: var(--text);
+  cursor: pointer;
+}
+.tab.aktiv { background: var(--prim); border-color: var(--prim); color: #fff; }
+.geschoss-zeile label { font-size: .85rem; display: flex; gap: 6px; align-items: center; }
+.geschoss-zeile select { font: inherit; padding: 5px; border-radius: 6px; }
+
+.geschoss-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 14px; align-items: start; }
+.etage { display: none; }
+.etage.aktiv { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.flur {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 12px;
+  background: var(--bg);
+  border: 1px dashed var(--linie);
+  border-radius: 8px;
+  color: var(--grau);
+  font-size: .85rem;
+}
+.raum {
+  font: inherit;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-height: 92px;
+  padding: 10px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.raum .nr { font-weight: 700; font-size: 1.05rem; }
+.raum .name { font-size: .8rem; }
+.raum .status { margin-top: auto; font-size: .8rem; font-weight: 700; display: flex; gap: 5px; }
+.raum.gewaehlt { border-color: var(--prim); box-shadow: 0 0 0 2px var(--prim-hell); }
+.raum.st-aus { background: repeating-linear-gradient(135deg, var(--aus-bg) 0 8px, transparent 8px 12px); background-color: var(--aus-bg); }
+.raum.st-unbekannt { border-style: dashed; border-color: var(--unb-f); }
+.raum.st-alarm { border-color: var(--alarm-f); }
+
+.legende { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.werte { margin: 10px 0; padding: 0; list-style: none; }
+.werte li { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid var(--linie); font-size: .9rem; }
+
+/* Meldung Detail */
+.detail-kopf { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; margin-bottom: 12px; }
+.detail-kopf h1 { margin: 0; }
+.detail { display: grid; grid-template-columns: 2fr 1fr; gap: 14px; align-items: start; }
+.zuweisung { display: grid; gap: 8px; margin-top: 12px; }
+.kommentar-liste { list-style: none; margin: 0 0 12px; padding: 0; }
+.kommentar-liste li { padding: 10px 0; border-bottom: 1px solid var(--linie); }
+.kommentar-liste .wer { font-size: .8rem; color: var(--grau); }
+.kommentar textarea { width: 100%; min-height: 70px; margin-bottom: 8px; }
+.verlauf { margin: 0; padding-left: 18px; font-size: .9rem; }
+
+/* Login */
+.login-seite { display: grid; place-items: center; min-height: 100vh; padding: 16px; }
+.login { width: 100%; max-width: 380px; }
+.login h1 { text-align: center; margin-bottom: 4px; }
+.login .hinweis { text-align: center; margin-bottom: 16px; }
+.login .fehler { display: none; color: var(--alarm-f); font-size: .85rem; }
+.login .umschalter { margin: 0 0 14px; justify-content: center; }
+.login .umschalter label { color: var(--grau); }
+
+/* Rollen: Elemente ein- und ausblenden */
+.kein-admin { display: none; }
+body.rolle-lehrkraft .nur-hm,
+body.rolle-lehrkraft .nur-admin { display: none !important; }
+body.rolle-hausmeister .nur-admin { display: none !important; }
+body.rolle-hausmeister .kein-admin, body.rolle-lehrkraft .kein-admin { display: block; }
+.mit-alarm { display: none; }
+body.alarm-an .mit-alarm { display: inline; }
+body.alarm-an .ohne-alarm { display: none; }
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .rahmen { grid-template-columns: 68px 1fr; }
+  .nav { padding: 10px 6px; }
+  .nav a { justify-content: center; padding: 10px 0; }
+  .nav .lbl, .nutzer { display: none; }
+  .nav .ico { font-size: 1.4rem; }
+  .kennzahlen { grid-template-columns: repeat(2, 1fr); }
+  .dash, .geschoss-layout, .detail { grid-template-columns: 1fr; }
+}
+
+/* Smartphone */
+@media (max-width: 599px) {
+  body { padding-bottom: 66px; }
+  .rahmen { display: block; }
+  .nav {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 10;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 0;
+    padding: 4px;
+    border-right: 0;
+    border-top: 1px solid var(--linie);
+  }
+  .nav a { flex-direction: column; gap: 0; padding: 4px 6px; font-size: .7rem; }
+  .nav .lbl { display: block; }
+  .nav .ico { font-size: 1.3rem; }
+  .inhalt { padding: 12px; }
+  h1 { font-size: 1.25rem; }
+  .kopf { padding: 8px 12px; }
+  .umschalter { margin-left: 0; width: 100%; display: grid; grid-template-columns: 1fr 1fr; }
+  .umschalter label { justify-content: space-between; }
+  .wetter-chip { display: none; }
+  .kennzahlen { gap: 10px; }
+  .kpi .zahl { font-size: 1.6rem; }
+  .etage.aktiv { grid-template-columns: repeat(2, 1fr); }
+  .sp2 { display: none; }
+  .filter input, .filter select { flex: 1 1 100%; }
+  .login .umschalter { display: flex; }
+}
+
+.detail > div > .karte + .karte, .tabellen-rahmen + .tabellen-rahmen { margin-top: 14px; }
+.detail aside h2:not(:first-child), .verlauf-titel { margin-top: 16px; }
+.formular .hinweis { font-weight: 400; }

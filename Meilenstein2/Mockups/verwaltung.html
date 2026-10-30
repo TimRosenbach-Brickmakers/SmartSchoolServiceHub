@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Verwaltung – Smart School Service Hub</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+</head>
+<body>
+<header class="kopf">
+  <div class="marke">Smart School Service Hub <small>Beatusstraße</small></div>
+  <div class="umschalter">
+    <label><span data-de="Rolle" data-en="Role">Rolle</span>
+      <select id="rolle">
+        <option value="lehrkraft" data-de="Lehrkraft" data-en="Teacher">Lehrkraft</option>
+        <option value="hausmeister" data-de="Hausmeister" data-en="Caretaker">Hausmeister</option>
+        <option value="admin" data-de="Admin" data-en="Admin">Admin</option>
+      </select>
+    </label>
+    <label><span data-de="Wetter" data-en="Weather">Wetter</span>
+      <select id="wetter">
+        <option value="sonne" data-de="Sonne" data-en="Sunny">Sonne</option>
+        <option value="regen" data-de="Regen" data-en="Rain">Regen</option>
+        <option value="sturm" data-de="Sturm" data-en="Storm">Sturm</option>
+        <option value="schnee" data-de="Schnee" data-en="Snow">Schnee</option>
+      </select>
+    </label>
+    <label><span data-de="Alarm" data-en="Alarm">Alarm</span>
+      <select id="alarm">
+        <option value="aus" data-de="aus" data-en="off">aus</option>
+        <option value="an" data-de="an" data-en="on">an</option>
+      </select>
+    </label>
+    <label><span data-de="Sprache" data-en="Language">Sprache</span>
+      <select id="sprache">
+        <option value="de">DE</option>
+        <option value="en">EN</option>
+      </select>
+    </label>
+    <span class="wetter-chip" id="wetter-chip"></span>
+    <a class="abmelden" href="index.html" data-de="Abmelden" data-en="Sign out">Abmelden</a>
+  </div>
+</header>
+
+<!-- Alarm-Banner -->
+<div class="alarm-banner">
+  <span>✕ ALARM E.04 Serverraum: Temperatur 34,2 °C (Grenzwert 28 °C) seit 09:42</span>
+  <button class="btn klein nur-hm" type="button">Quittieren</button>
+  <a href="geschoss.html">Zum Raum</a>
+</div>
+<div class="rahmen">
+  <nav class="nav">
+    <a href="dashboard.html"><span class="ico">⌂</span><span class="lbl" data-de="Übersicht" data-en="Overview">Übersicht</span></a>
+    <a href="geschoss.html"><span class="ico">▦</span><span class="lbl" data-de="Geschosse" data-en="Floors">Geschosse</span></a>
+    <a href="meldungen.html"><span class="ico">☰</span><span class="lbl" data-de="Meldungen" data-en="Tickets">Meldungen</span></a>
+    <a href="meldung_neu.html"><span class="ico">＋</span><span class="lbl" data-de="Melden" data-en="Report">Melden</span></a>
+    <a class="nur-admin" href="verwaltung.html" class="aktiv"><span class="ico">⚙</span><span class="lbl" data-de="Verwaltung" data-en="Admin">Verwaltung</span></a>
+    <div class="nutzer"><b id="nutzer-name">K. Weber</b><span id="nutzer-rolle">Hausmeister</span></div>
+  </nav>
+  <main class="inhalt">
+    <h1>Verwaltung</h1>
+
+    <p class="kein-admin karte">Kein Zugriff. Die Verwaltung ist nur für IT und Administratoren sichtbar.</p>
+
+    <div class="nur-admin">
+      <section class="karte tabellen-rahmen">
+        <div class="detail-kopf">
+          <h2>Räume</h2>
+          <button class="btn klein" type="button">Neuer Raum</button>
+        </div>
+        <table>
+          <thead><tr><th>Nr.</th><th>Name</th><th>Geschoss</th><th>Typ</th><th>Plätze</th><th>Zustand</th><th>Aktion</th></tr></thead>
+          <tbody>
+            <tr><td>E.02</td><td>Netzwerklabor</td><td>EG</td><td>Labor</td><td>16</td><td><span class="badge st-warnung">▲ Warnung</span></td><td><button class="btn klein hell" type="button">Bearbeiten</button></td></tr>
+            <tr><td>E.04</td><td>Serverraum</td><td>EG</td><td>Technik</td><td>0</td><td><span class="badge st-ok">✓ OK</span></td><td><button class="btn klein hell" type="button">Bearbeiten</button></td></tr>
+            <tr><td>E.08</td><td>Aula</td><td>EG</td><td>Veranstaltung</td><td>120</td><td><span class="badge st-aus">⊘ Außer Betrieb</span></td><td><button class="btn klein hell" type="button">Sperre aufheben</button></td></tr>
+            <tr><td>1.02</td><td>Informatiklabor</td><td>1. OG</td><td>Labor</td><td>24</td><td><span class="badge st-warnung">▲ Warnung</span></td><td><button class="btn klein hell" type="button">Bearbeiten</button></td></tr>
+            <tr><td>2.06</td><td>Archiv</td><td>2. OG</td><td>Lager</td><td>0</td><td><span class="badge st-unbekannt">? Unbekannt</span></td><td><button class="btn klein hell" type="button">Bearbeiten</button></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="karte tabellen-rahmen">
+        <div class="detail-kopf">
+          <h2>Geräte</h2>
+          <button class="btn klein" type="button">Neues Gerät</button>
+        </div>
+        <table>
+          <thead><tr><th>Name</th><th>Typ</th><th>Raum</th><th>Seriennummer</th><th>Status</th><th>Aktion</th></tr></thead>
+          <tbody>
+            <tr><td>Beamer 1.02</td><td>Display</td><td>1.02</td><td>BM-20417</td><td>Defekt</td><td><button class="btn klein hell" type="button">Bearbeiten</button></td></tr>
+            <tr><td>3D-Drucker 1</td><td>3D-Drucker</td><td>E.03</td><td>3D-88213</td><td>Online</td><td><button class="btn klein hell" type="button">Bearbeiten</button></td></tr>
+            <tr><td>Switch Kern</td><td>Netzwerk</td><td>E.04</td><td>SW-55102</td><td>Online</td><td><button class="btn klein hell" type="button">Bearbeiten</button></td></tr>
+            <tr><td>Lüftung Süd</td><td>Lüftung</td><td>E.04</td><td>LF-30977</td><td>Wartung</td><td><button class="btn klein hell" type="button">Bearbeiten</button></td></tr>
+            <tr><td>Sensor CO₂ E.02</td><td>Sensor</td><td>E.02</td><td>SN-90412</td><td>Online</td><td><button class="btn klein hell" type="button">Grenzwerte</button></td></tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </main>
+</div>
+</body>
+</html>
